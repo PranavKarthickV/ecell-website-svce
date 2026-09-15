@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Linkedin, Mail, Instagram, Github } from "lucide-react"
+import { Linkedin, Github } from "lucide-react"
 import { motion } from "framer-motion"
 import ParticleDriftBackground from "@/components/ui/ParticleDriftBackground"
 
@@ -14,682 +14,418 @@ type TeamMember = {
   team: string
   domain: string
   image: string
+  bio?: string
   linkedin?: string
-  email?: string
-  instagram?: string
-  phone?: string
   github?: string
+  imagePosition?: string
+  imageFit?: "cover" | "contain"
 }
 
 const teamMembers: TeamMember[] = [
-  // Managers
   {
-    id: 49,
-    name: "Dr.S.Ilaiyavel",
-    position: "Manager",
-    team: "Ecell Managers",
-    domain: "Faculty",
+    "id": 1,
+    "name": "Baarath Arumugaraja",
+    "position": "President",
+    "team": "Board Members / Leadership",
+    "domain": "CSE - 4th Year",
+    "image": "/teams/2026/baarath_arumugaraja.jpg",
+    "bio": "Just a chill guy with a curious mind and a questionable sleep schedule.",
+    "linkedin": "https://www.linkedin.com/in/baarath-arumugaraja-7a8820329/"
+  },
+  {
+    "id": 2,
+    "name": "Janani T",
+    "position": "Vice President",
+    "team": "Board Members / Leadership",
+    "domain": "CSE - 4th Year",
+    "image": "/teams/2026/janani_t.jpg",
+    "bio": "< Dream it | Chase it | Live it > Running out of time ??",
+    "linkedin": "https://www.linkedin.com/in/janani-t-bb507a29a",
+    "github": "https://github.com/JananiTcoder"
+  },
+  {
+    "id": 3,
+    "name": "Harshith Bubalan",
+    "position": "Secretary",
+    "team": "Board Members / Leadership",
+    "domain": "MNA - 4th Year",
+    "image": "/teams/2026/harshith_bubalan.jpg",
+    "bio": "?",
+    "linkedin": "https://www.linkedin.com/in/harshith-bubalan-9b3588284",
+    "github": "https://github.com/Harshith-bubalan",
+    "imagePosition": "center 42%"
+  },
+  {
+    "id": 4,
+    "name": "Sankara Narayanan S",
+    "position": "CEO",
+    "team": "Board Members / Leadership",
+    "domain": "Biotech - 4th Year",
+    "image": "/teams/2026/sankara_narayanan_s.jpg",
+    "bio": "Becoming the entrepreneur I aspire to be."
+  },
+  {
+    "id": 5,
+    "name": "Abijith P",
+    "position": "COO",
+    "team": "Board Members / Leadership",
+    "domain": "CSE - 4th Year",
+    "image": "/teams/2026/abijith_p.jpg",
+    "linkedin": "https://www.linkedin.com/in/abijith-prashanth-064206321"
+  },
+  {
+    "id": 6,
+    "name": "Tharun S",
+    "position": "Creative Director",
+    "team": "Board Members / Leadership",
+    "domain": "MNA - 3rd Year",
+    "image": "/teams/2026/tharun_s.jpg",
+    "bio": "Figuring it out ??",
+    "linkedin": "https://www.linkedin.com/in/tharun-somasundaram",
+    "imagePosition": "center 40%"
+  },
+  {
+    "id": 7,
+    "name": "Sudish M",
+    "position": "CTO",
+    "team": "Board Members / Leadership",
+    "domain": "CSE - 4th Year",
+    "image": "/teams/2026/sudish_m.jpg",
+    "bio": "Trying to do better.",
+    "linkedin": "https://in.linkedin.com/in/sudish-mohan-14a21331a",
+    "imagePosition": "center 30%"
+  },
+  {
+    "id": 8,
+    "name": "Thoufikur Rahaman Y",
+    "position": "CDO",
+    "team": "Board Members / Leadership",
+    "domain": "EEE - 3rd Year",
+    "image": "/teams/design/THOUFIKUR RAHAMAN.webp",
+    "linkedin": "https://www.linkedin.com/in/thoufikur-rahaman-y-9a66a0388",
+    "github": "https://github.com/THOUFIKUR"
+  },
+  {
+    "id": 9,
+    "name": "Balakrishnan.R",
+    "position": "DOI",
+    "team": "Board Members / Leadership",
+    "domain": "AI&DS - 4th Year",
+    "image": "/teams/2026/balakrishnan_r.jpg",
+    "bio": "Analytics, podcaster, and startup enthusiast�building things and surviving life.",
+    "linkedin": "https://www.linkedin.com/in/balakrishnan-r-5a1006278",
+    "github": "https://github.com/BalaKrishnan1708",
+    "imagePosition": "center 70%"
+  },
+  {
+    "id": 10,
+    "name": "Madhav Krishna",
+    "position": "Community Captain",
+    "team": "Leaders / Representatives",
+    "domain": "CSE - 3rd Year",
+    "image": "/teams/2026/madhav_krishna.jpg",
+    "bio": "??",
+    "linkedin": "https://www.linkedin.com/in/madhav-krishna-jps/"
+  },
+  {
+    "id": 11,
+    "name": "Shree Varshini M",
+    "position": "EPIC Representative",
+    "team": "Leaders / Representatives",
+    "domain": "ECE - 4th Year",
+    "image": "/teams/committee/CEO.webp",
+    "linkedin": "https://www.linkedin.com/in/shree-varshini-m-533b08304"
+  },
+  {
+    "id": 12,
+    "name": "Sri bharathi R",
+    "position": "Executive Lead",
+    "team": "Leaders / Representatives",
+    "domain": "MNA - 3rd Year",
+    "image": "/teams/executive/SRI BHARATHI.webp",
+    "bio": "Grounded in independence, rising through the chaos, unstoppable when provoked by a challenge"
+  },
+  {
+    "id": 13,
+    "name": "Kayal Nethra K",
+    "position": "CMO",
+    "team": "Leaders / Representatives",
+    "domain": "CSE - 3rd Year",
+    "image": "/teams/marketing/KAYAL NETHRA.webp",
+    "bio": "Im not everyones cup of tea. Id rather be champagne.",
+    "linkedin": "https://www.linkedin.com/in/kayal-nethra-k-cse-36150b332",
+    "imagePosition": "center 65%"
+  },
+  {
+    "id": 14,
+    "name": "K Buvaneswaran",
+    "position": "Tech Lead",
+    "team": "Leaders / Representatives",
+    "domain": "ECE - 3rd Year",
+    "image": "/teams/2026/k_buvaneswaran.jpg",
+    "bio": "A Person who loves coding, AI/ML, and building tech projects. Excited to be the Tech Lead and bring my skills to the team!",
+    "linkedin": "https://www.linkedin.com/in/buvaneswaran-kannan-6114a8333",
+    "github": "https://github.com/BuvaneswaranK306",
+    "imagePosition": "center 60%"
+  },
+  {
+    "id": 15,
+    "name": "Seyed Mohamed MF",
+    "position": "Design Lead",
+    "team": "Leaders / Representatives",
+    "domain": "MNA - 4th Year",
+    "image": "/teams/design/SEYED MOHAMED .webp",
+    "bio": "Designing dreams, leading teams, breaking the mundane.",
+    "linkedin": "https://www.linkedin.com/in/seyed-mohamed-0a4172315"
+  },
+  {
+    "id": 16,
+    "name": "Yogavarthanee R",
+    "position": "Executive Team",
+    "team": "Executive Team",
+    "domain": "Chemical Engineering - 3rd Year",
+    "image": "/teams/executive/YOGAVARTHANEE.webp",
+    "bio": "Driven by potential, powered by strong management skills, and always ready to turn ideas into action."
+  },
+  {
+    "id": 17,
+    "name": "Jai Ganesh S",
+    "position": "Executive Team",
+    "team": "Executive Team",
+    "domain": "AI&DS - 3rd Year",
+    "image": "/teams/2026/jai_ganesh_s.jpg",
+    "bio": "Passionate about AI, innovation, and entrepreneurship. I enjoy turning ideas into impactful solutions and collaborating with like-minded people.",
+    "linkedin": "https://www.linkedin.com/in/jai-ganesh0310",
+    "github": "https://github.com/jaiganeshsathiyendiran-a11y"
+  },
+  {
+    "id": 18,
+    "name": "Hayagreeva L",
+    "position": "Executive Team",
+    "team": "Executive Team",
+    "domain": "Biotech - 2nd Year",
+    "image": "/teams/2026/hayagreeva_l.jpg",
+    "bio": "A student who is always open to communication and is eager to know the essence of entrepreneurship while travelling with like-minded peers",
+    "linkedin": "https://www.linkedin.com/in/hayagreeva-l-95a459382"
+  },
+  {
+    "id": 19,
+    "name": "Prithish A S",
+    "position": "Executive Team",
+    "team": "Executive Team",
+    "domain": "CSE - 2nd Year",
+    "image": "/teams/2026/prithish_a_s.jpg",
+    "bio": "here for the plot"
+  },
+  {
+    "id": 20,
+    "name": "Aravindar APS",
+    "position": "Marketing Team Member",
+    "team": "Marketing Team",
+    "domain": "Mechanical - 2nd Year",
+    "image": "/teams/2026/aravindar_aps.jpg",
+    "bio": "Seize the day"
+  },
+  {
+    "id": 21,
+    "name": "TJ Saattviki",
+    "position": "Marketing Team Member",
+    "team": "Marketing Team",
+    "domain": "ECE - 2nd Year",
+    "image": "/teams/2026/tj_saattviki.jpg",
+    "bio": "Just a little chaos, a lot of dreams, and a story still unfolding...."
+  },
+  {
+    "id": 22,
+    "name": "Shivani shri R D",
+    "position": "Marketing Team Member",
+    "team": "Marketing Team",
+    "domain": "EEE - 2nd Year",
+    "image": "/teams/2026/shivani_shri_r_d.jpg",
+    "bio": "I�m an innovative and curious learner passionate about entrepreneurship, problem-solving, leadership, and transforming ideas into impactful real-world solutions.",
+    "linkedin": "https://www.linkedin.com/in/shivani-shri-r-d-34636b397",
+    "github": "https://github.com/shivanishri2110-maker"
+  },
+  {
+    "id": 23,
+    "name": "Vaishali",
+    "position": "Design Team Member",
+    "team": "Design Team",
+    "domain": "CSE - 3rd Year",
+    "image": "/teams/design/VAISHALI .webp",
+    "linkedin": "https://www.linkedin.com/in/vaishali-v"
+  },
+  {
+    "id": 24,
+    "name": "Yogendra SK",
+    "position": "Design Team Member",
+    "team": "Design Team",
+    "domain": "Mechanical - 3rd Year",
+    "image": "/teams/design/YOGENDRA.webp",
+    "linkedin": "https://www.linkedin.com/in/yogendra-b19ba032b"
+  },
+  {
+    "id": 25,
+    "name": "Rithik Nishal.L",
+    "position": "Design Team Member",
+    "team": "Design Team",
+    "domain": "CSE - 2nd Year",
+    "image": "/teams/2026/rithik_nishal_l.jpg",
+    "bio": "Juggling deadlines, designs, and college life�with a little creativity in between.\n Always learning, always creating.",
+    "github": "https://github.com/Rithik-NL03"
+  },
+  {
+    "id": 26,
+    "name": "Akshaya Venkatesh",
+    "position": "Design Team Member",
+    "team": "Design Team",
+    "domain": "EEE - 2nd Year",
+    "image": "/teams/2026/akshaya_venkatesh.jpg",
+    "bio": "just a girl who started using canva during lock down for youtube videos"
+  },
+  {
+    "id": 27,
+    "name": "Vippin Antony",
+    "position": "Creative Team Member",
+    "team": "Creative Team",
+    "domain": "CSE - 2nd Year",
+    "image": ""
+  },
+  {
+    "id": 28,
+    "name": "Naren Annamalai A",
+    "position": "Creative Team Member",
+    "team": "Creative Team",
+    "domain": "IT - 2nd Year",
+    "image": ""
+  },
+  {
+    "id": 29,
+    "name": "Harshini Devi U",
+    "position": "Creative Team Member",
+    "team": "Creative Team",
+    "domain": "ECE - 2nd Year",
+    "image": "/teams/2026/harshini_devi_u.jpg",
+    "bio": "Video editor, artist, and full-time side quest collector�trying random creative things until one of them turns into a business."
+  },
+  {
+    "id": 30,
+    "name": "Chalakesh S K",
+    "position": "Community Manager",
+    "team": "Community Team",
+    "domain": "Chemical Engineering - 3rd Year",
+    "image": "/teams/community/CHALAKESH.webp",
+    "bio": "A core introvert stepping out of my shell to connect people, build communities, and bridge the gap between our audience and entrepreneurship."
+  },
+  {
+    "id": 31,
+    "name": "Kamalina K",
+    "position": "Community Manager",
+    "team": "Community Team",
+    "domain": "ECE - 3rd Year",
+    "image": "/teams/community/KAMALINA.webp",
+    "bio": "Need Money",
+    "linkedin": "https://www.linkedin.com/in/kamalina-k-ece-14a39435a"
+  },
+  {
+    "id": 32,
+    "name": "Kaviyarasan S",
+    "position": "Community Manager",
+    "team": "Community Team",
+    "domain": "EEE - 3rd Year",
+    "image": "/teams/2026/kaviyarasan_s.jpg",
+    "bio": "I'm dumb"
+  },
+  {
+    "id": 33,
+    "name": "Madhushalani S",
+    "position": "Community Manager",
+    "team": "Community Team",
+    "domain": "Biotech - 2nd Year",
+    "image": "/teams/2026/madhushalani_s.jpg",
+    "bio": "A little creative, a little chaotic, and always curious � figuring things out, trying new things, and occasionally turning them into something meaningful."
+  },
+  {
+    "id": 34,
+    "name": "ES Nishitha",
+    "position": "Community Manager",
+    "team": "Community Team",
+    "domain": "ECE - 2nd Year",
+    "image": "/teams/2026/es_nishitha.jpg",
+    "linkedin": "https://www.linkedin.com/in/nishitha-es-2887b2377"
+  },
+  {
+    "id": 35,
+    "name": "Jefina Giftlin J",
+    "position": "Content Team Member",
+    "team": "Content Team",
+    "domain": "Biotech - 3rd Year",
+    "image": "/teams/2026/jefina_giftlin_j.jpg",
+    "bio": "A curious mind, a creative side, and plenty of ideas � with a little bit of chaos along the way.",
+    "linkedin": "https://www.linkedin.com/in/jefina-giftlin-j-b1b696326",
+    "github": "https://github.com/Jefina08"
+  },
+  {
+    "id": 36,
+    "name": "Harshitha H",
+    "position": "Content Team Member",
+    "team": "Content Team",
+    "domain": "Biotech - 2nd Year",
+    "image": "/teams/2026/harshitha_h.jpg",
+    "bio": "A cheerful student and a graceful classical dancer who loves to meet new people, try new things and make every experience a memorable one"
+  },
+  {
+    "id": 37,
+    "name": "Perumal P",
+    "position": "Tech Team Member",
+    "team": "Tech Team",
+    "domain": "ECE - 2nd Year",
+    "image": "/teams/2026/perumal_p.jpg",
+    "bio": "Dream big, start small, and keep trying. Every idea has the power to become something meaningful.",
+    "linkedin": "https://tinyurl.com/3vvmdd22"
+  },
+  {
+    "id": 38,
+    "name": "Pranav Karthick V",
+    "position": "Tech Team Member",
+    "team": "Tech Team",
+    "domain": "ECE - 2nd Year",
+    "image": "/teams/2026/pranav_karthick_v.jpg",
+    "bio": "�Think less about fitting into the world, and more about what you can add to it.�That�s the mindset I bring when I build, experiment, and explore entrepreneurship.",
+    "linkedin": "https://www.linkedin.com/in/pranav-karthick-v-632680371",
+    "github": "https://github.com/PranavKarthickV"
+  },
+  {
+    "id": 39,
+    "name": "Antony Abishek A",
+    "position": "Tech Mentor",
+    "team": "Tech Mentor",
+    "domain": "CSE - 4th Year",
+    "image": "/teams/2026/antony_abishek_a.jpg",
+    "bio": "Passionate about technology and always eager to learn, build, and help others grow."
+  }
+]
+
+const facultyMembers: TeamMember[] = [
+  {
+    id: 101,
+    name: "Dr. S. Ilaiyavel",
+    position: "Manager & Professor",
+    team: "Faculty Advisory Council",
+    domain: "Department of Mechanical Engineering",
     image: "/teams/managers/ilayavel.webp",
-    linkedin: "",
-    email: "",
-    instagram: "",
-    phone: "",
-    github: "",
+    bio: "Providing administrative guidance, institutional backing, and mentorship to E-Cell SVCE.",
+    imagePosition: "center 20%",
   },
   {
-    id: 50,
-    name: "V.senthill velan",
-    position: "Manager",
-    team: "Ecell Managers",
-    domain: "Faculty",
+    id: 102,
+    name: "Mr. V. Senthill Velan",
+    position: "Manager & Assistant Professor",
+    team: "Faculty Advisory Council",
+    domain: "Department of Mechanical Engineering",
     image: "/teams/managers/sentilvelan.webp",
-    linkedin: "",
-    email: "",
-    instagram: "",
-    phone: "",
-    github: "",
-  },
-
-  // Core Leadership
-  {
-    id: 1,
-    name: "Roshan M",
-    position: "President",
-    team: "Core Leadership",
-    domain: "ECE - 4th Year",
-    image: "/teams/core/president.webp",
-    linkedin: "https://www.linkedin.com/in/roshan-m-711a95292?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    email: "2022ec0448@svce.ac.in",
-    instagram: "@roshan.m.forever",
-    phone: "9841092274",
-    github: "",
-  },
-  {
-    id: 2,
-    name: "Dharshni. R",
-    position: "Vice President",
-    team: "Core Leadership",
-    domain: "Biotechnology - 4th Year",
-    image: "/teams/core/Vice president.webp",
-    linkedin: "https://www.linkedin.com/in/dharshni-ramesh-a72934286?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    email: "2022bt0547@svce.ac.in",
-    instagram: "dharshni6434",
-    phone: "8056071990",
-    github: "",
-  },
-  {
-    id: 3,
-    name: "Manojkumar A",
-    position: "Secretary",
-    team: "Core Leadership",
-    domain: "ECE - 4th Year",
-    image: "/teams/core/general secratory.webp",
-    linkedin: "https://www.linkedin.com/in/manojkumar-anbuchezhian?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    email: "2022ec0231@svce.ac.in",
-    instagram: "https://www.instagram.com/manojkumaranbuchezhian?igsh=MTZvNmJ2b3IybHVqeQ==",
-    phone: "7418434691",
-    github: "https://github.com/Manojkumaranbuchezhian",
-  },
-
-  // Executive Committee
-  {
-    id: 4,
-    name: "Shree Varshini M",
-    position: "CEO",
-    team: "Executive Committee",
-    domain: "ECE - 3rd Year",
-    image: "/teams/committee/CEO.webp",
-    linkedin: "https://www.linkedin.com/in/shree-varshini-m-533b08304?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    email: "2023ec0448@svce.ac.in",
-    instagram: "",
-    phone: "9360239715",
-    github: "",
-  },
-  {
-    id: 5,
-    name: "Bhargavi TR",
-    position: "COO",
-    team: "Executive Committee",
-    domain: "Chemical Engineering - 4th Year",
-    image: "/teams/committee/COO.webp",
-    linkedin: "https://www.linkedin.com/in/bhargavitr?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    email: "2022ch0775@svce.ac.in",
-    instagram: "bhargavi.tr",
-    phone: "9360286533",
-    github: "",
-  },
-  {
-    id: 6,
-    name: "N.Nitish",
-    position: "CFO",
-    team: "Executive Committee",
-    domain: "AIDS - 3rd Year",
-    image: "/teams/committee/CFO.webp",
-    linkedin: "https://www.linkedin.com/in/nitish-navaneeth?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
-    email: "2023ad0681@svce.ac.in",
-    instagram: "nitish_31x",
-    phone: "8428557498",
-    github: "",
-  },
-  {
-    id: 7,
-    name: "Daksha S",
-    position: "CMO",
-    team: "Executive Committee",
-    domain: "Biotech - 2nd Year",
-    image: "/teams/committee/CMO.webp",
-    linkedin: "https://www.linkedin.com/in/daksha-suresh-0522b330a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    email: "2024bt0705@svce.ac.in",
-    instagram: "dakshasuresh25",
-    phone: "9043590574",
-    github: "",
-  },
-  {
-    id: 8,
-    name: "Janani T",
-    position: "CTO",
-    team: "Executive Committee",
-    domain: "CSE - 3rd Year",
-    image: "/teams/committee/CTO.webp",
-    linkedin: "https://www.linkedin.com/in/janani-t-bb507a29a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    email: "2023cs0309@svce.ac.in",
-    instagram: "janani_11_2005",
-    phone: "9150988305",
-    github: "",
-  },
-  {
-    id: 9,
-    name: "VIKAASH B G",
-    position: "CDO",
-    team: "Executive Committee",
-    domain: "ECE - 4th Year",
-    image: "/teams/committee/CDO.webp",
-    linkedin: "https://www.linkedin.com/in/vikaash-b-g-79733830b/",
-    email: "viklearner@gmail.com",
-    instagram: "",
-    phone: "8525068831",
-    github: "",
-  },
-
-  // Department Heads
-  {
-    id: 10,
-    name: "Balakrishnan.R",
-    position: "Tech Head",
-    team: "Department Heads",
-    domain: "AI&DS - 3rd Year",
-    image: "/teams/heads/Tech.webp",
-    linkedin: "https://www.linkedin.com/in/balakrishnan-r-5a1006278",
-    email: "2023ad0681@svce.ac.in",
-    instagram: "iambalakrishnan.r",
-    phone: "9444543801",
-    github: "https://github.com/BalaKrishnan1708",
-  },
-  {
-    id: 11,
-    name: "Sankara Narayanan S",
-    position: "Execution Head",
-    team: "Department Heads",
-    domain: "Biotech - 3rd Year",
-    image: "/teams/heads/Execution.webp",
-    linkedin: "http://linkedin.com/in/sankara-narayanan-s-biotech",
-    email: "2023bt0367@svce.ac.in",
-    instagram: "s4nk4r",
-    phone: "8610049372",
-    github: "",
-  },
-  {
-    id: 12,
-    name: "Harshith B",
-    position: "Content Head",
-    team: "Department Heads",
-    domain: "Mechanical and Automation- 3rd Year",
-    image: "/teams/heads/Content1.webp",
-    linkedin: "https://www.linkedin.com/in/harshith-bubalan-9b3588284?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    email: "2023mn0363@svce.ac.in",
-    instagram: "Harshith.007",
-    phone: "8608786089",
-    github: "",
-  },
-  {
-    id: 13,
-    name: "Divya Shree M",
-    position: "Design Head",
-    team: "Department Heads",
-    domain: "IT - 2nd Year",
-    image: "/teams/heads/Design.webp",
-    linkedin: "https://www.linkedin.com/in/divya-shree-m-09531631a/",
-    email: "2024it0765@svce.ac.in",
-    instagram: "_divya03shree_",
-    phone: "8015848971",
-    github: "",
-  },
-  {
-    id: 14,
-    name: "Baarath Arumugaraja",
-    position: "Operation Lead",
-    team: "Department Heads",
-    domain: "CSE - 3rd Year",
-    image: "/teams/heads/Operational.webp",
-    linkedin: "https://www.linkedin.com/in/baarath-arumugaraja-7a8820329/",
-    email: "2023cs0772@svce.ac.in",
-    instagram: "baarathraja",
-    phone: "9952436835",
-    github: "",
-  },
-  {
-    id: 15,
-    name: "Balapranav K",
-    position: "Community Captain",
-    team: "Department Heads",
-    domain: "EEE - 2nd Year",
-    image: "/teams/heads/Community.webp",
-    linkedin: "https://www.linkedin.com/in/balapranav/",
-    email: "2024ee0123@svce.ac.in",
-    instagram: "balabranab",
-    phone: "7397380056",
-    github: "",
-  },
-  {
-    id: 16,
-    name: "THARUN S",
-    position: "Creative Lead",
-    team: "Department Heads",
-    domain: "Mech & Automation - 2nd Year",
-    image: "/teams/heads/Creative.webp",
-    linkedin: "https://www.linkedin.com/in/tharun-somasundaram",
-    email: "2024mn0785@svce.ac.in",
-    instagram: "@tharunehhhh",
-    phone: "9342526239",
-    github: "",
-  },
-
-  // Executive Members
-  {
-    id: 17,
-    name: "P.Rasiga",
-    position: "Executive Member",
-    team: "Executive Members",
-    domain: "Chemical Engineering - 2nd Year",
-    image: "/teams/executive/rasiga.webp",
-    linkedin: "https://www.linkedin.com/in/rasigap28",
-    email: "rasigapalanisamy1@gmail.com",
-    instagram: "",
-    phone: "9500240988",
-    github: "",
-  },
-  {
-    id: 18,
-    name: "Sri Bharathi R",
-    position: "Executive Member",
-    team: "Executive Members",
-    domain: "Mechanical and automation - 2nd Year",
-    image: "/teams/executive/SRI BHARATHI.webp",
-    linkedin: "https://www.linkedin.com/in/sribharathi-rajkumar",
-    email: "2024mn0785@svce.ac.in",
-    instagram: "Sribharathi666",
-    phone: "7397103127",
-    github: "",
-  },
-  {
-    id: 19,
-    name: "Mayooritha P",
-    position: "Executive Member",
-    team: "Executive Members",
-    domain: "Computer Science - 2nd Year",
-    image: "/teams/executive/MAYOORITHA.webp",
-    linkedin: "https://www.linkedin.com/in/mayooritha-pugazhenthi-8a43b0327?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
-    email: "2024cs0480@svce.ac.in",
-    instagram: "mayooritha_",
-    phone: "9677809044",
-    github: "",
-  },
-  {
-    id: 20,
-    name: "Ajay M",
-    position: "Executive Member",
-    team: "Executive Members",
-    domain: "CSE - 3rd Year",
-    image: "/teams/executive/AJAY.webp",
-    linkedin: "https://www.linkedin.com/in/ajay-m-3416961b3?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    email: "2023cs0477@svce.ac.in",
-    instagram: "ajay.tel",
-    phone: "8925323250",
-    github: "",
-  },
-  {
-    id: 21,
-    name: "G.Shreenidhi",
-    position: "Executive Member",
-    team: "Executive Members",
-    domain: "EEE - 2nd Year",
-    image: "/teams/executive/Shreenidhi.webp",
-    linkedin: "https://www.linkedin.com/in/.G.Shreenidhi EEE",
-    email: "2024EE0011@svce.ac.in",
-    instagram: "I'm not in instagram",
-    phone: "9962010822",
-    github: "",
-  },
-  {
-    id: 22,
-    name: "Mahalakshmi L",
-    position: "Executive Member",
-    team: "Executive Members",
-    domain: "ECE - 2nd Year",
-    image: "/teams/executive/mahalashmmi.webp",
-    linkedin: "https://www.linkedin.com/in/maha-lakshmi-l-756594329?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    email: "2024ec0167@svce.ac.in",
-    instagram: "Ival._.nila",
-    phone: "8248228218",
-    github: "",
-  },
-  {
-    id: 23,
-    name: "Yogavarthanee R",
-    position: "Executive Member",
-    team: "Executive Members",
-    domain: "Chemical engineering - 2nd Year",
-    image: "/teams/executive/YOGAVARTHANEE.webp",
-    linkedin: "https://www.linkedin.com/in/yogavarthanee-rangarajan-569894314",
-    email: "2024ch0915@svce.ac.in",
-    instagram: "yoga_2007__",
-    phone: "7812815995",
-    github: "",
-  },
-  {
-    id: 24,
-    name: "Dimple Kurugunda",
-    position: "Executive Member",
-    team: "Executive Members",
-    domain: "EEE - 2nd Year",
-    image: "/teams/executive/dimple.webp",
-    linkedin: "https://www.linkedin.com/in/dimple-kurugunda",
-    email: "2024ee0945@svce.ac.in",
-    instagram: "dimple___chowdaey",
-    phone: "9951661000",
-    github: "",
-  },
-
-  // Marketing Team
-  {
-    id: 25,
-    name: "Santhoshkumar C",
-    position: "Marketing Team Member",
-    team: "Marketing Team",
-    domain: "EEE - 2nd Year",
-    image: "/teams/marketing/SANTHOSHKUMAR.webp",
-    linkedin: "https://www.linkedin.com/in/santhoshkumar112",
-    email: "2024ee0189@svce.ac.in",
-    instagram: "_.mashysandy._",
-    phone: "9080083869",
-    github: "",
-  },
-  {
-    id: 26,
-    name: "GOKUL S",
-    position: "Marketing Team Member",
-    team: "Marketing Team",
-    domain: "Biotech - 2nd Year",
-    image: "/teams/marketing/GOKUL S.webp",
-    linkedin: "https://www.linkedin.com/in/gokul-s-3526bb337?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    email: "2024bt0848@svce.ac.in",
-    instagram: "_.s.gokul._",
-    phone: "9884463837",
-    github: "",
-  },
-  {
-    id: 27,
-    name: "Kayal Nethra K",
-    position: "Marketing Team Member",
-    team: "Marketing Team",
-    domain: "CSE - 2nd Year",
-    image: "/teams/marketing/KAYAL NETHRA.webp",
-    linkedin: "https://www.linkedin.com/in/kayal-nethra-k-cse-36150b332?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    email: "2024cs0492@svce.ac.in",
-    instagram: "_kayaln_",
-    phone: "9444311421",
-    github: "",
-  },
-  {
-    id: 28,
-    name: "Mhadhurra Chandran",
-    position: "Marketing Team Member",
-    team: "Marketing Team",
-    domain: "CSE - 3rd Year",
-    image: "/teams/marketing/Mhadhurra.webp",
-    linkedin: "https://www.linkedin.com/in/mhadhurra-chandran-a0576b321?trk=contact-info",
-    email: "2023CS0956@svce.ac.in",
-    instagram: "mhadhu_06",
-    phone: "9840646632",
-    github: "",
-  },
-  {
-    id: 29,
-    name: "Logeshwari N",
-    position: "Marketing Team Member",
-    team: "Marketing Team",
-    domain: "Biotech - 2nd Year",
-    image: "/teams/marketing/LOGESHWARI N.webp",
-    linkedin: "https://www.linkedin.com/in/logeshwari-n-1ab032327?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    email: "2024bt0388@svce.ac.in",
-    instagram: "blue_.moonx_",
-    phone: "9360737534",
-    github: "",
-  },
-  {
-    id: 30,
-    name: "Bharathraj R",
-    position: "Marketing Executive",
-    team: "Marketing Team",
-    domain: "ECE - 3rd Year",
-    image: "/teams/marketing/BHARATHRAJ.webp",
-    linkedin: "https://www.linkedin.com/in/bharathraj-ranjith-kumar-aa5162294?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    email: "2023ec0327@svce.ac.in",
-    instagram: "bharath_krish12",
-    phone: "8148582517",
-    github: "",
-  },
-
-  // Tech Team
-  {
-    id: 31,
-    name: "Sudish M",
-    position: "Tech Team Member",
-    team: "Tech Team",
-    domain: "CSE - 3rd Year",
-    image: "/teams/web/Sudish.webp",
-    linkedin: "https://in.linkedin.com/in/sudish-mohan-14a21331a",
-    email: "2023cs0508@svce.ac.in",
-    instagram: "_._sudish",
-    phone: "9150195835",
-    github: "",
-  },
-  {
-    id: 32,
-    name: "ABIJITH P",
-    position: "Tech Team Member",
-    team: "Tech Team",
-    domain: "CSE - 3rd Year",
-    image: "/teams/web/Abijith.webp",
-    linkedin: "https://www.linkedin.com/in/abijith-prashanth-064206321",
-    email: "abijithmark095@gmail.com",
-    instagram: "0__abi__1",
-    phone: "6374997429",
-    github: "",
-  },
-  {
-    id: 33,
-    name: "K Buvaneswaran",
-    position: "Tech Team Member",
-    team: "Tech Team",
-    domain: "ECE - 2nd Year",
-    image: "/teams/web/bhuvaneswaran.webp",
-    linkedin: "https://www.linkedin.com/in/k-buvaneswaran-ece",
-    email: "2024ec0673@svce.ac.in",
-    instagram: "_buvi_2006",
-    phone: "9380867566",
-    github: "",
-  },
-  {
-    id: 34,
-    name: "Divya Bharathi R",
-    position: "Tech Team Member",
-    team: "Tech Team",
-    domain: "CSE - 3rd Year",
-    image: "/teams/web/DIVYA BHARATHI.webp",
-    linkedin: "https://in.linkedin.com/in/divya-bharathi-r-71b41b321",
-    email: "2023CS0098@SVCE.AC.IN",
-    instagram: "divya_bharathi_18",
-    phone: "9840658454",
-    github: "",
-  },
-
-  // Content Team
-  {
-    id: 35,
-    name: "Irfanaa Parveen M",
-    position: "Content Team Member",
-    team: "Content Team",
-    domain: "ECE - 2nd Year",
-    image: "/teams/content/IRFANAA PARVEEN.webp",
-    linkedin: "https://www.linkedin.com/in/irfanaa-parveen-786106318",
-    email: "2024ec0149@svce.ac.in",
-    instagram: "",
-    phone: "9047871059",
-    github: "",
-  },
-  {
-    id: 36,
-    name: "Haritha S V",
-    position: "Content Team Member",
-    team: "Content Team",
-    domain: "CSE - 3rd Year",
-    image: "/teams/content/HARITHA.webp",
-    linkedin: "https://www.linkedin.com/in/haritha-s-v-93896b388?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    email: "2023cs0438@svce.ac.in",
-    instagram: "harrithaaaaa",
-    phone: "9344096900",
-    github: "",
-  },
-  {
-    id: 47,
-    name: "Jefina Giftlin J",
-    position: "Content Team Member",
-    team: "Content Team",
-    domain: "Biotech - 2nd Year",
-    image: "/teams/content/jefina.webp",
-    linkedin: "https://www.linkedin.com/in/jefina-giftlin-j-b1b696326?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    email: "2024bt0694@svce.ac.in",
-    instagram: "https://www.instagram.com/jefina_2808?igsh=MXZpdmNjcmUxc2xoaQ==",
-    phone: "7200285674",
-    github: "https://github.com/Jefina08",
-  },
-
-  // Design Team
-  {
-    id: 37,
-    name: "THOUFIKUR RAHAMAN Y",
-    position: "Design Team Member",
-    team: "Design Team",
-    domain: "EEE - 2nd Year",
-    image: "/teams/design/THOUFIKUR RAHAMAN.webp",
-    linkedin: "https://www.linkedin.com/in/thoufikur-rahaman-y-9a66a0388?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    email: "thoufikurrahaman@gmail.com",
-    instagram: "itx_thoufik_107",
-    phone: "8098889409",
-    github: "",
-  },
-  {
-    id: 38,
-    name: "Yogendra",
-    position: "Design Team Member",
-    team: "Design Team",
-    domain: "Mechanical - 2nd Year",
-    image: "/teams/design/YOGENDRA.webp",
-    linkedin: "https://www.linkedin.com/in/yogendra-b19ba032b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    email: "yogendraasky@gmail.com",
-    instagram: "syncdesign2025",
-    phone: "8838773569",
-    github: "",
-  },
-  {
-    id: 39,
-    name: "PRATHIBA M S K",
-    position: "Design Team Member",
-    team: "Design Team",
-    domain: "ECE - 2nd Year",
-    image: "/teams/design/PRATHIBA.webp",
-    linkedin: "https://www.linkedin.com/in/m-s-k-prathiba-608588329?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    email: "2024ec0664@svce.ac.in",
-    instagram: "prathi_075",
-    phone: "6374977382",
-    github: "",
-  },
-  {
-    id: 40,
-    name: "Seyed Mohamed",
-    position: "Design Team Member",
-    team: "Design Team",
-    domain: "Mechanical and Automation - 3rd Year",
-    image: "/teams/design/SEYED MOHAMED .webp",
-    linkedin: "https://www.linkedin.com/in/seyed-mohamed-0a4172315?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    email: "2023mn0363@svce.ac.in",
-    instagram: "s_e_y_e_d_07",
-    phone: "7871499588",
-    github: "",
-  },
-  {
-    id: 41,
-    name: "Vaishali V",
-    position: "Design Team Member",
-    team: "Design Team",
-    domain: "CSE - 2nd Year",
-    image: "/teams/design/VAISHALI .webp",
-    linkedin: "https://www.linkedin.com/in/vaishali-v",
-    email: "2024cs0537@svce.ac.in",
-    instagram: "Vaish____1018",
-    phone: "6379003163",
-    github: "",
-  },
-  {
-    id: 42,
-    name: "Sri Hari Roshan N",
-    position: "Design Team Member",
-    team: "Design Team",
-    domain: "CSE - 2nd Year",
-    image: "/teams/design/SRI HARI ROSHAN.webp",
-    linkedin: "https://www.linkedin.com/in/sri-hari-roshan-n-cse-9741a8328?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    email: "2024cs0492@svce.ac.in",
-    instagram: "r_3_o_s_h_1_a_n_7",
-    phone: "9025130344",
-    github: "",
-  },
-
-  // Community Managers
-  {
-    id: 43,
-    name: "Hariis P",
-    position: "Community Manager",
-    team: "Community Managers",
-    domain: "CSE - 3rd Year",
-    image: "/teams/community/HARIIS P.webp",
-    linkedin: "https://in.linkedin.com/in/hariis-p-aa7759374",
-    email: "2023cs0127@svce.ac.in",
-    instagram: "",
-    phone: "6374593242",
-    github: "",
-  },
-  {
-    id: 44,
-    name: "Kamalina K",
-    position: "Community Manager",
-    team: "Community Managers",
-    domain: "ECE - 2nd Year",
-    image: "/teams/community/KAMALINA.webp",
-    linkedin: "https://www.linkedin.com/in/kamalina-k-ece-14a39435a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    email: "2024ec0448@svce.ac.in",
-    instagram: "yosantehe",
-    phone: "8838814898",
-    github: "",
-  },
-  {
-    id: 45,
-    name: "CHALAKESH S K",
-    position: "Community Manager",
-    team: "Community Managers",
-    domain: "Chemical engineering - 2nd Year",
-    image: "/teams/community/CHALAKESH.webp",
-    linkedin: "https://www.linkedin.com/in/chalakesh-s-k-6261bb32a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    email: "2024ch0915@svce.ac.in",
-    instagram: "chalakesh_.sk",
-    phone: "6385251225",
-    github: "",
-  },
-  {
-    id: 46,
-    name: "Sanjana Madankumar",
-    position: "Community/LinkedIn Manager",
-    team: "Community Managers",
-    domain: "IT - 3rd Year",
-    image: "/teams/community/Sanjana Madankumar.webp",
-    linkedin: "https://www.linkedin.com/in/sanjana-madankumar?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    email: "2023it0765@svce.ac.in",
-    instagram: "sanjanamadankumar",
-    phone: "9176638977",
-    github: "",
-  },
-  {
-    id: 48,
-    name: "Madhav",
-    position: "Community Manager",
-    team: "Community Managers",
-    domain: "CSE - 2nd Year",
-    image: "",
-    linkedin: "https://www.linkedin.com/in/madhav-krishna-jps/",
-    email: "",
-    instagram: "",
-    phone: "8921856848",
-    github: "",
+    bio: "Guiding student entrepreneurship initiatives, incubation programs, and project facilitation at SVCE.",
+    imagePosition: "center 15%",
   },
 ]
 
@@ -704,22 +440,28 @@ const groupedTeamMembers = teamMembers.reduce(
   {} as Record<string, TeamMember[]>,
 )
 
-const facultyMembers = teamMembers.filter((member) => member.domain === "Faculty")
-
-const boardMembers = teamMembers.filter((member) =>
-  ["Core Leadership", "Executive Committee"].includes(member.team),
+const boardMembers = teamMembers.filter(
+  (member) => member.team === "Board Members / Leadership",
 )
 
-const leadMembers = teamMembers.filter((member) =>
-  ["Tech Head", "Execution Head", "Content Head", "Design Head", "Operation Lead", "Community Captain", "Creative Lead"].includes(member.position),
+const leadMembers = teamMembers.filter(
+  (member) => member.team === "Leaders / Representatives",
 )
 
-const teamGroups = [
-  "Executive Members",
+const execMembers = teamMembers.filter(
+  (member) => member.team === "Executive Team",
+)
+
+const techMentorMembers = teamMembers.filter(
+  (member) => member.team === "Tech Mentor",
+)
+
+const departmentalGroups = [
   "Marketing Team",
   "Design Team",
+  "Creative Team",
+  "Community Team",
   "Content Team",
-  "Community Managers",
   "Tech Team",
 ]
 
@@ -740,6 +482,7 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
   const initials = member.name
     .split(" ")
     .map((part) => part[0])
+    .filter(Boolean)
     .join("")
     .slice(0, 2)
     .toUpperCase()
@@ -772,7 +515,15 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
                 src={member.image}
                 alt={member.name}
                 fill
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                style={
+                  member.imagePosition || member.imageFit
+                    ? {
+                        ...(member.imagePosition && { objectPosition: member.imagePosition }),
+                        ...(member.imageFit && { objectFit: member.imageFit }),
+                      }
+                    : undefined
+                }
               />
             ) : (
               <div className="flex h-full w-full items-center justify-center bg-indigo-500/10 text-2xl font-black text-indigo-300 tracking-wider">
@@ -802,7 +553,7 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(99,102,241,0.12),transparent_70%)] rounded-3xl"
           />
 
-          <div className="relative z-10 space-y-4 my-auto">
+          <div className="relative z-10 space-y-3 my-auto">
             <div className="inline-flex items-center gap-1.5 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-indigo-300">
               {member.team}
             </div>
@@ -827,16 +578,15 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
               </div>
             )}
 
-            {member.phone && (
-              <div className="text-xs text-slate-400">
-                <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500 block">Contact</span>
-                <span className="text-slate-300 font-mono">{member.phone}</span>
-              </div>
+            {member.bio && (
+              <p className="text-xs italic text-slate-300 line-clamp-4 px-2 pt-1">
+                &ldquo;{member.bio}&rdquo;
+              </p>
             )}
           </div>
 
           {/* Social Links Footer */}
-          {(member.linkedin || member.email || member.instagram || member.github) && (
+          {(member.linkedin || member.github) && (
             <div className="relative z-10 pt-4 border-t border-white/10 flex items-center justify-center gap-4">
               {member.linkedin && (
                 <Link
@@ -848,28 +598,6 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
                   className="text-slate-400 hover:text-indigo-300 transition-colors p-1.5 rounded-full hover:bg-white/5"
                 >
                   <Linkedin className="h-4 w-4" />
-                </Link>
-              )}
-              {member.email && (
-                <Link
-                  href={`mailto:${member.email}`}
-                  onClick={(e) => e.stopPropagation()}
-                  aria-label={`Email ${member.name}`}
-                  className="text-slate-400 hover:text-indigo-300 transition-colors p-1.5 rounded-full hover:bg-white/5"
-                >
-                  <Mail className="h-4 w-4" />
-                </Link>
-              )}
-              {member.instagram && (
-                <Link
-                  href={member.instagram.startsWith("http") ? member.instagram : `https://instagram.com/${member.instagram.replace("@", "")}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  aria-label={`Instagram for ${member.name}`}
-                  className="text-slate-400 hover:text-indigo-300 transition-colors p-1.5 rounded-full hover:bg-white/5"
-                >
-                  <Instagram className="h-4 w-4" />
                 </Link>
               )}
               {member.github && (
@@ -925,7 +653,11 @@ function TeamSection({
 
       <div
         className={`grid gap-6 sm:grid-cols-2 ${
-          featured ? "lg:grid-cols-3" : "lg:grid-cols-4"
+          featured
+            ? members.length === 2
+              ? "lg:grid-cols-2 max-w-3xl"
+              : "lg:grid-cols-3"
+            : "lg:grid-cols-4"
         }`}
       >
         {members.map((member) => (
@@ -977,22 +709,35 @@ export default function TeamPage() {
       {/* ── Team Directory ────────────────────────────────────────────────── */}
       <div className="px-6 py-24 md:px-12">
         <div className="mx-auto max-w-7xl">
+          {/* 0. Faculty Advisory Council */}
           <TeamSection
-            eyebrow="01 / ADVISORY"
-            title="Faculty Advisory Board"
+            eyebrow="01 / ADVISORY COUNCIL"
+            title="Faculty Advisory Council"
             members={facultyMembers}
             featured
           />
+
+          {/* 1. Board Members / Leadership */}
           <TeamSection
             eyebrow="02 / EXECUTIVE BOARD"
-            title="Board Members"
+            title="Board Members / Leadership"
             members={boardMembers}
             featured
           />
+
+          {/* 2. Leaders / Representatives */}
           <TeamSection
             eyebrow="03 / LEADERSHIP"
-            title="Leadership Council"
+            title="Leaders / Representatives"
             members={leadMembers}
+            featured
+          />
+
+          {/* 3. Executive Team */}
+          <TeamSection
+            eyebrow="04 / EXECUTIVE TEAM"
+            title="Executive Team"
+            members={execMembers}
             featured
           />
 
@@ -1012,18 +757,26 @@ export default function TeamPage() {
             </div>
           </div>
 
-          {/* Departmental Teams */}
-          {teamGroups.map((groupName, idx) => {
+          {/* Departmental Teams (Marketing, Design, Creative, Community, Content, Tech) */}
+          {departmentalGroups.map((groupName, idx) => {
             const members = groupedTeamMembers[groupName] ?? []
             return (
               <TeamSection
                 key={groupName}
-                eyebrow={`0${idx + 4} / DEPARTMENT`}
+                eyebrow={`0${idx + 5} / DEPARTMENT`}
                 title={groupName}
                 members={members}
               />
             )
           })}
+
+          {/* Tech Mentor */}
+          <TeamSection
+            eyebrow="11 / ADVISORY & MENTORSHIP"
+            title="Tech Mentor"
+            members={techMentorMembers}
+            featured
+          />
         </div>
       </div>
     </div>
